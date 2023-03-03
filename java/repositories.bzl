@@ -102,6 +102,20 @@ def remote_jdk8_repos(name = ""):
     )
     maybe(
         remote_java_repository,
+        name = "remote_jdk8_linux_s390x",
+        target_compatible_with = [
+            "@platforms//os:linux",
+            "@platforms//cpu:s390x",
+        ],
+        sha256 = "b137500de20ff1a733e9c4ff28cb4ee585cd01f8cd9a50636fe0d22b86ba502e",
+        strip_prefix = "jdk8u362-b09",
+        urls = [
+            "https://github.com/ibmruntimes/semeru8-binaries/releases/download/jdk8u362-b09_openj9-0.36.0/ibm-semeru-open-jdk_s390x_linux_8u362b09_openj9-0.36.0.tar.gz",
+        ],
+        version = "8",
+    )
+    maybe(
+        remote_java_repository,
         name = "remote_jdk8_linux",
         target_compatible_with = [
             "@platforms//os:linux",
@@ -161,6 +175,7 @@ def remote_jdk8_repos(name = ""):
     )
     REMOTE_JDK8_REPOS = [
         "remote_jdk8_linux_aarch64",
+        "remote_jdk8_linux_s390x",
         "remote_jdk8_linux",
         "remote_jdk8_macos_aarch64",
         "remote_jdk8_macos",
